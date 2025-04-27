@@ -14,10 +14,18 @@ functions:
       - httpApi:
           path: /signUp
           method: post
-          
+
   confirmSignUp:
     handler: handlers/confirmSignUp.confirmSignUp
     events:
       - httpApi:
           path: /confirmSignUp
           method: post  
+          
+  signIn:
+    handler: handlers/signIn.signIn
+    events:
+      - httpApi:
+          path: /sign-in
+          method: post  
+
