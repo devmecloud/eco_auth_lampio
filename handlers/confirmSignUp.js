@@ -1,20 +1,20 @@
-const {CognitoIdentityProviderClient, ConfirmSignUpCommand} = require("@aws-sdk/client-cognito-identity-provider");
+const { CognitoIdentityProviderClient, ConfirmSignUpCommand } = require('@aws-sdk/client-cognito-identity-provider');
 
 const client = new CognitoIdentityProviderClient({
-    region: 'us-east-1',//Specify your AWS region
+    region: 'us-east-1', //Specify your AWS region
 });
 
 //Define Coginto App Client ID for user pool authention
 
-const CLIENT_ID = "22bvabi6ueb2jn58fhkiuo9063";
+const CLIENT_ID = '22bvabi6ueb2jn58fhkiuo9063';
 
-exports.confirmSignUp = async (event) =>{
-    const {email, confirmationCode}  = JSON.parse(event.body);
+exports.confirmSignUp = async (event) => {
+    const { email, confirmationCode } = JSON.parse(event.body);
 
     const params = {
         ClientId: CLIENT_ID,
-        Username :email,
-        ConfirmationCode:confirmationCode,
+        Username: email,
+        ConfirmationCode: confirmationCode,
     };
     try {
         const command = new ConfirmSignUpCommand(params);
@@ -22,13 +22,13 @@ exports.confirmSignUp = async (event) =>{
         await client.send(command);
 
         return {
-            statusCode:200,
-            body: JSON.stringify({msg:"User successfully confirmed!"}),
-        };  
+            statusCode: 200,
+            body: JSON.stringify({ msg: 'User successfully confirmed!' }),
+        };
     } catch (error) {
         return {
-            statusCode:400,
-            body:JSON.stringify({msg: 'confirmation failed', error:error.message}),
+            statusCode: 400,
+            body: JSON.stringify({ msg: 'confirmation failed', error: error.message }),
         };
     }
-}
+};

@@ -1,5 +1,21 @@
 {
+  "scripts": {
+    "prettier": "prettier --config .prettierrc \"./**/*.{ts,tsx,js,scss}\" --write"
+  },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.797.0"
+    "@aws-sdk/client-cognito-identity-provider": "^3.797.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,scss}": [
+      "npm run prettier"
+    ]
   }
 }
