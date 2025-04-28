@@ -21,11 +21,16 @@ functions:
       - httpApi:
           path: /confirmSignUp
           method: post  
-          
+
   signIn:
     handler: handlers/signIn.signIn
     events:
       - httpApi:
           path: /sign-in
           method: post  
-
+  signOut:
+    handler: handlers/signOut.signOut
+    events:
+      - httpApi:
+          path: /sign-out
+          method: post        
