@@ -1,3 +1,4 @@
+const UserModel = require('../models/UserModel');
 //Import  the required AWS Cognito SDK
 
 const { CognitoIdentityProviderClient, SignUpCommand } = require('@aws-sdk/client-cognito-identity-provider');
@@ -16,19 +17,19 @@ const CLIENT_ID = '22bvabi6ueb2jn58fhkiuo9063';
 
 exports.signUp = async (event) => {
     //Parse the incoming request body to extract  user data
-    const { email, password, fullName } = JSON.parse(event.body);
-
+    const {email, password, fullName}  = JSON.parse(event.body);
+    const username  = fullName.replace(/\s+/g, '_'); //replace space with underscore
     //Configure parameters for Cognito  SignupCommand
 
     const params = {
-        ClientId: CLIENT_ID, //Coginitor App Client ID
-        Username: email, //User's emailas the username in coginito
-        Password: password, // User's chosen password
-        UserAttributes: [
-            //Additinal  user attributes  for coginito
-            { Name: 'email', Value: email }, //Email attribute
-            { Name: 'name', Value: fullName }, // Fullname attribute
-        ],
+        ClientId : CLIENT_ID,//Coginitor App Client ID
+        Username: username, //User's email as the username in coginito
+        Password: password,// User's chosen password
+        UserAttributes:[//Additinal  user attributes  for coginito
+            {Name: 'email', Value: email},//Email attribute
+            {Name: 'name', Value: fullName},// Fullname attribute
+
+        ]
     };
 
     try {
@@ -36,6 +37,11 @@ exports.signUp = async (event) => {
         const command = new SignUpCommand(params);
         //Execute the sign-up request
         await client.send(command);
+
+        //save user in DynamoDb after Cognito sign-up succeeds
+        const newUser  = new UserModel(email,username);
+
+        await newUser.save();
 
         //Return success reponse to the client
 

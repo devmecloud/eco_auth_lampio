@@ -6,6 +6,26 @@ service: authService
 provider:
   name: aws
   runtime: nodejs20.x
+  iamRoleStatements: #Grant IAM permissions to Lambda -
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource:
+        - arn:aws:dynamodb:us-east-1:356362278647:table/Users
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table #Defines a dynamodb table resource
+      Properties:
+        TableName: Users #name of the table were users are going to be stored
+        BillingMode: PAY_PER_REQUEST #Automaticaly scales read/write capacity base on usage
+        AttributeDefinitions:
+          - AttributeName: userId #The partition key(unique identifier for each user)
+            AttributeType: S # "s" means String data type
+        KeySchema:
+          - AttributeName: userId #Defines userId as the primary  key
+            KeyType: HASH #HASH indicates its's the  partition key  
 
 functions:
   signUp:
