@@ -1,0 +1,37 @@
+@host = s717qokuwe.execute-api.us-east-1.amazonaws.com
+
+### Api sign up
+POST https://{{host}}/signUp HTTP/1.1
+content-type: application/json
+
+{
+    "email" : "khaitkdev@gmail.com",
+    "fullName" : "khaitkdev@gmail.com",
+    "password" : "Apc@2,.g3"
+}
+
+### Check email get code for api confirmSignUp
+POST https://{{host}}/confirmSignUp HTTP/1.1
+content-type: application/json
+
+{
+    "email" : "khaitkdev@gmail.com",
+    "confirmationCode" : "472991"
+}
+
+### api sign in
+POST https://{{host}}/sign-in HTTP/1.1
+content-type: application/json
+
+{
+    "email" : "khaitkdev@gmail.com",
+    "password" : "Apc@2,.g3"
+}
+
+### api sign out
+POST https://{{host}}/sign-out HTTP/1.1
+content-type: application/json
+
+{
+    "accessToken": "eyJraWQiOiI3S1pjTDhQOFhcL1NkZzJuU1BKTGVWNUFONFduUWFRbnFHYkdiV0ZQVTU3cz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmNDg4MzQwOC05MGUxLTcwZTItNWYyZC0xZGY3NTJkMDg2OTYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9EalJST2xzMlAiLCJjbGllbnRfaWQiOiIyMmJ2YWJpNnVlYjJqbjU4ZmhraXVvOTA2MyIsIm9yaWdpbl9qdGkiOiI2MzZjNDdlNS0wNTNiLTQ0Y2YtYWQ4MS03NzhlMTA3OTQ0YjgiLCJldmVudF9pZCI6IjgzMTdiYTBhLTQ3MTItNGIxMS04ODA3LWZjNzBkNWIyNTJhZSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NDU4NDczMjIsImV4cCI6MTc0NTg1MDkyMiwiaWF0IjoxNzQ1ODQ3MzIyLCJqdGkiOiI1ZjJhM2YxOC0yNDQ1LTQ2YWMtYWIyZC1kOWIyY2E5YWViY2IiLCJ1c2VybmFtZSI6ImY0ODgzNDA4LTkwZTEtNzBlMi01ZjJkLTFkZjc1MmQwODY5NiJ9.eH2G29q8M03HQcU7dpRVvWOSlBi-RjB8eDiGRkiwdp5Dg4j7i7KjnhdW5LVZlHPEFvd3FD1FNgQyaVrYUSYdofZAyrBIWDFNlofwHIGABa8PXv91e62eTMGDduhzPV0V_Fx8g4Mi4v4MjB8vN1YcPFekL8qnUTtWxHECkKZ9g9WlEN8tEKU5KPxyFOC1heYbOLcx0fGpI8WLRlVuKxZ8j0jpyHypoMJgdkkdePSSQDGckxV0y-vsMlThsAkgYHxyCky8iUpaETsDlfEzvmHYFs38sLbGOVX7myn_Y_HZa-OekGJpbenxaFHJpKzgBeMf1gfadM869I8Hr_qo0dKWEQ"
+}
