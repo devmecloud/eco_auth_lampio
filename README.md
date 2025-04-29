@@ -1,5 +1,14 @@
-
 # Serverless Framework Node HTTP API on AWS
+
+| No      | Title                                      | Link      |
+| ------- | ---------------------------------------------------- | --------- |
+| 1       | Clone source code                    | [Clone source code](#step-1--clone-source-code)     |
+| 2       | Create app in Cognito AWS            | [Create app in Cognito AWS](#step-2--create-app-in-cognito-aws)     |
+| 3       | Install package                     | [Install package](#step-3--install-package)     |
+| 4       | Two case                           | [Run in local](#if-you-run-local-then)     |
+|        |                            | [Run on github action](#if-you-want-push-code-on-your-github)     |
+|5        |Test function                            | [Test function](#step-5--test-function)     |
+
 
 ## Step 1 : Clone source code
 
