@@ -32,7 +32,7 @@ npm install
 ```
 ## Step 4 : Two case
 
-- If you run local then
+### If you run local then
 ```
 aws configure
 AWS Access Key ID [****************]: your_key
@@ -64,7 +64,7 @@ functions:
 ```
 
 
-- If you want push code on your github
+### If you want push code on your github
 
 ```
 Setting key aws in github
